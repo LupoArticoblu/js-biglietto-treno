@@ -1,9 +1,23 @@
 //Inserire le varie proprietà come variabili
+const nomePasseggero = prompt('Digitare Nome');
+const etaPasseggero  = parseInt(prompt('Digitare l\'età del passeggero, in anni compiuti'));
+const trattaPercorsa = parseInt(prompt('Digitare la destinazione, in km da percorrere'));
+const bigliettoKM    = 0.21;
 
-const etaPasseggero = prompt(parseInt('Digitare l\'età del passeggero, in anni compiuti'));
+const costoBiglietto = bigliettoKM * trattaPercorsa;
+const costoBig20 = (bigliettoKM * trattaPercorsa) / 0.02;
+const costoBig40 = (bigliettoKM * trattaPercorsa) / 0.04;
 
+console.log('costo del biglietto senza sconti', costoBiglietto);
 
-const trattaPercorsa = prompt(parseInt('Digitare la destinazione, in km da percorrere'));
-
-const bigliettoKM = 0.21;
-
+if(etaPasseggero < 18){
+  console.log('utente20%');
+  document.getElementById('biglietto').innerHTML +=` Buon viaggio ${nomePasseggero}, hai diritto ad uno sconto del 20%. Prezzo finale: ${costoBig20}€ 
+  grazie e arrivederci.`
+}else if(etaPasseggero >= 65){
+  console.log('utente40%');
+  document.getElementById('biglietto').innerHTML +=` Buon viaggio ${nomePasseggero}, hai diritto ad uno sconto del 40%. Prezzo finale: ${costoBig40}€ grazie e arrivederci`
+}else{
+  console.log('utenteNaN%');
+  document.getElementById('biglietto').innerHTML +=` Buon viaggio ${nomePasseggero}, non ci sono sconti disponibili per te. Prezzo finale: ${costoBiglietto}€ `
+};
